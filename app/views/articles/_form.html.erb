@@ -1,0 +1,22 @@
+<%= form_with model: article, class:'form-container' do |form| %>
+    <div class='field'>
+        <strong><%= form.label :title %></strong>
+        <p><%= form.text_field :title %></p>
+        <% article.errors.full_messages_for(:title).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+
+    <div class='field'>
+        <strong><%= form.label :body %></strong>
+        <p><%= form.text_area :body %></p>
+        <% article.errors.full_messages_for(:body).each do |message| %>
+            <div><%= message %></div>
+        <% end %>
+    </div>
+    <div class='field'>
+        <strong><%= form.label :header_image %></strong>
+        <p><%= form.file_field :header_image %></p>
+    </div>
+    <%= form.submit class:'btn'%>
+<% end %>

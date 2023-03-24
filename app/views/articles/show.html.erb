@@ -1,0 +1,27 @@
+<h1 class='title' style = "text-transform:capitalize;"><%= @article.title %></h1>
+
+<div class='item' style='min-height: 200px; line-height:1.6; width:70vw; font-size: 1rem; text-align:justify'>
+    <% if @article.header_image.present? %>
+        <div class='img-container'>
+            <%= image_tag(@article.header_image, width:400) %>
+        </div>
+    <% end %>
+    <%= @article.body %>
+</div>
+
+<div class='btn-container'>
+    <%= link_to "Edit", edit_article_path(@article), class:'btn change' %>
+    <%= link_to "Destroy", article_path(@article), method: :delete, data: {confirm: "Are you sure?"}, class:'btn destroy' %>
+</div>
+
+<div class='comment-section'>
+    <div class='comments-container'>
+        <h2 class='sub-title'> Comments </h2>
+        <%= render @article.comments %>
+    </div>
+    <div>
+        <h2 class='sub-title' style="color:rgb(8, 8, 161);text-align:left">Add a comment:</h2>
+        <%= render 'comments/form' %>
+    </div>
+</div>
+<%= link_to 'Back', root_path, class:'btn' %>
